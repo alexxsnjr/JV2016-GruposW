@@ -185,6 +185,15 @@ public class SesionesDAO implements OperacionesDAO, Persistente {
 		// Separa las sesiones del mismo usuario.
 		return separarSesionesUsr(posicion-2);
 	}
+	/**
+	 * Obtiene todos los objeto del mismo tipo.
+	 * @return - la List con los objetos encontrados.
+	 */
+	@Override
+	public List obtenerTodos() {
+	
+		return datosSesiones;
+	}
 
 	/**
 	 * Separa en una lista independiente de todas las sesiones de un mismo usuario.
@@ -273,7 +282,7 @@ public class SesionesDAO implements OperacionesDAO, Persistente {
 	 * Obtiene el listado de todos los identificadores de las sesiones almacenadas.
 	 * @return el texto con los identificadores.
 	 */
-	public String listarIdSesiones() {
+	public String listarId() {
 		StringBuilder listado = new StringBuilder();
 		for (SesionUsuario sesion: datosSesiones) {
 			if (sesion != null) {
@@ -282,7 +291,7 @@ public class SesionesDAO implements OperacionesDAO, Persistente {
 		}
 		return listado.toString();
 	}
-
+	
 	/**
 	 * Elimina todos las sesiones almacenadas.
 	 */
@@ -290,5 +299,9 @@ public class SesionesDAO implements OperacionesDAO, Persistente {
 	public void borrarTodo() {
 		datosSesiones = new ArrayList<SesionUsuario>();	
 	}
+
+	
+
+
 
 }//class
