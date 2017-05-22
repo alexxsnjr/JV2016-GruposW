@@ -12,6 +12,7 @@ package accesoDatos.memoria;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 import accesoDatos.DatosException;
 import accesoDatos.OperacionesDAO;
@@ -144,6 +145,16 @@ public class MundosDAO implements OperacionesDAO {
 	}
 	
 	/**
+	 * Obtiene todos los objeto del mismo tipo.
+	 * @return - la List con los objetos encontrados.
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List obtenerTodos() {
+		return datosMundos;
+	}
+	
+	/**
 	 *  Alta de un objeto en el almacén de datos, 
 	 *  sin repeticiones, según el campo id previsto. 
 	 *	@param obj - Objeto a almacenar.
@@ -205,6 +216,21 @@ public class MundosDAO implements OperacionesDAO {
 		for (Mundo mundo: datosMundos) {
 			if (mundo != null) {
 				listado.append("\n" + mundo);
+			}
+		}
+		return listado.toString();
+	}
+	
+	/**
+	 * Obtiene el listado de todos los nombres de los Mundos almacenados.
+	 * @return el texto con los nombre de todos los Mundos.
+	 */
+	@Override
+	public String listarId() {
+		StringBuilder listado = new StringBuilder();
+		for (Mundo mundo: datosMundos) {
+			if (mundo != null) {
+				listado.append("\n" + mundo.getNombre());
 			}
 		}
 		return listado.toString();
